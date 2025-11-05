@@ -1,3 +1,14 @@
+let shouldSort = false;
+
+// Step 1: User chooses sorting preference
+function setSortChoice(choice) {
+  shouldSort = choice;
+
+  document.getElementById("step1").style.display = "none";
+  document.getElementById("step2").style.display = "block";
+}
+
+// Step 2: Find permutation
 function findPermutation() {
   let str = document.getElementById("inputString").value.trim();
   let n = parseInt(document.getElementById("inputNumber").value);
@@ -8,7 +19,10 @@ function findPermutation() {
     return;
   }
 
-  // Recursive permutation generator
+  if (shouldSort) {
+    str = str.split("").sort().join("");
+  }
+
   const getPermutations = (arr) => {
     if (arr.length === 1) return [arr];
     const result = [];
@@ -30,5 +44,15 @@ function findPermutation() {
   }
 
   let nthPermutation = perms[n - 1].join("");
-  output.innerText = `✅ Permutation ${n}: ${nthPermutation}\n🔢 Total permutations: ${total}`;
+  output.innerText = `✅ Permutation ${n}: ${nthPermutation}\n🔢 Total permutations: ${total}\n📜 Sorted: ${shouldSort ? "Yes" : "No"}`;
+}
+
+// Step 3: Reset everything
+function resetForm() {
+  document.getElementById("inputString").value = "";
+  document.getElementById("inputNumber").value = "";
+  document.getElementById("output").innerText = "";
+
+  document.getElementById("step2").style.display = "none";
+  document.getElementById("step1").style.display = "block";
 }
