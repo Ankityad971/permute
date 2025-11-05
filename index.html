@@ -8,19 +8,37 @@
 </head>
 <body>
   <div class="container">
-    <h1>Nth Permutation Finder</h1>
-    <p class="subtitle">Enter a string and a number to find its permutation</p>
 
-    <div class="input-box">
-      <input type="text" id="inputString" placeholder="Enter string (e.g. abc)">
-      <input type="number" id="inputNumber" placeholder="Enter number (e.g. 3)">
+    <!-- Step 1: Ask about sorting -->
+    <div id="step1">
+      <h1>Nth Permutation Finder</h1>
+      <p class="subtitle">Do you want to sort the string before generating?</p>
+      <div class="button-box">
+        <button onclick="setSortChoice(true)">Yes, sort it</button>
+        <button onclick="setSortChoice(false)">No, keep original</button>
+      </div>
     </div>
 
-    <button onclick="findPermutation()">Find Permutation</button>
+    <!-- Step 2: Input string and number -->
+    <div id="step2" style="display:none;">
+      <h1>Enter Your Details</h1>
+      <p class="subtitle">Enter a string and number to find its permutation</p>
 
-    <div id="outputBox">
-      <p id="output"></p>
+      <div class="input-box">
+        <input type="text" id="inputString" placeholder="Enter string (e.g. abc)">
+        <input type="number" id="inputNumber" placeholder="Enter number (e.g. 3)">
+      </div>
+
+      <div class="button-box">
+        <button onclick="findPermutation()">Find</button>
+        <button class="reset" onclick="resetForm()">Reset</button>
+      </div>
+
+      <div id="outputBox">
+        <p id="output"></p>
+      </div>
     </div>
+
   </div>
 
   <script src="script.js"></script>
